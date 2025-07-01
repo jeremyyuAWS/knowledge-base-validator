@@ -20,7 +20,7 @@ export default function Home() {
   const [currentInput, setCurrentInput] = useState("");
   const [currentResponse, setCurrentResponse] = useState<AgentResponse | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
-  const [mode, setMode] = useState("simulated"); // simulated or live
+  const [mode, setMode] = useState("simulated"); // Default to simulated/demo mode
   const [error, setError] = useState<string | null>(null);
   const [agentConfig, setAgentConfig] = useState({
     endpoint: "",
@@ -35,13 +35,7 @@ export default function Home() {
       localStorage.setItem('kb_validator_welcome_seen', 'true');
     }
 
-    // Load saved mode preference
-    const savedMode = localStorage.getItem('kb_validator_mode');
-    if (savedMode === 'live' || savedMode === 'simulated') {
-      setMode(savedMode);
-    }
-
-    // Load saved config
+    // Load saved config but NOT mode - always start in demo mode
     const savedEndpoint = localStorage.getItem('kb_validator_endpoint');
     const savedApiKey = localStorage.getItem('kb_validator_api_key');
     if (savedEndpoint && savedApiKey) {
