@@ -10,6 +10,7 @@ interface AgentResponse {
     quantity: number;
     category: string;
     confidence?: number;
+    extraction_source?: string;
   }>;
   kb_matches: Array<{
     title: string;
@@ -18,10 +19,12 @@ interface AgentResponse {
     section: string;
     row_start?: number;
     row_end?: number;
+    match_reason?: string;
   }>;
   knowledge_gaps: Array<{
     description: string;
     confidence?: number;
+    gap_reason?: string;
   }> | string[];
   extracted_metadata: Record<string, any>;
 }
@@ -58,61 +61,53 @@ export class AgentClient {
     const inputLower = input.toLowerCase();
     let selectedScenario;
 
-    // Manufacturing - Penn Stainless style
-    if (this.containsKeywords(inputLower, [
-      'stainless steel', 'fabrication', 'manufacturing', 'tanks', 'asme', 
-      'pressure vessel', 'welding', 'penn stainless', '316l', 'material test'
-    ])) {
+    // Manufacturing - Penn Stainless style (most specific first)
+    if (this.containsKeywords(inputLower, ['penn stainless']) || 
+        this.containsKeywords(inputLower, ['stainless steel', 'fabrication', 'tanks', 'asme']) ||
+        this.containsKeywords(inputLower, ['316l', 'pressure vessel', 'welding'])) {
       selectedScenario = simulatedData.scenarios.find(s => s.id === 'manufacturing-custom-fabrication');
     }
     // Construction - Tiny's Construction style  
-    else if (this.containsKeywords(inputLower, [
-      'construction', 'building', 'concrete', 'steel frame', 'commercial', 
-      'shopping center', 'expansion', 'hvac', 'electrical', "tiny's construction"
-    ])) {
+    else if (this.containsKeywords(inputLower, ["tiny's construction"]) ||
+             this.containsKeywords(inputLower, ['construction', 'bidding', 'retail addition']) ||
+             this.containsKeywords(inputLower, ['concrete foundation', 'steel frame', 'shopping center'])) {
       selectedScenario = simulatedData.scenarios.find(s => s.id === 'construction-project-bid');
     }
     // Energy - Novitium Energy style
-    else if (this.containsKeywords(inputLower, [
-      'solar', 'energy', 'renewable', 'battery storage', 'grid', 'mw', 
-      'photovoltaic', 'power purchase', 'novitium energy', 'transmission'
-    ])) {
+    else if (this.containsKeywords(inputLower, ['novitium energy']) ||
+             this.containsKeywords(inputLower, ['250 mw', 'solar farm', 'battery energy storage']) ||
+             this.containsKeywords(inputLower, ['photovoltaic', 'grid interconnection', '138kv'])) {
       selectedScenario = simulatedData.scenarios.find(s => s.id === 'energy-renewable-project');
     }
     // Legal Compliance
-    else if (this.containsKeywords(inputLower, [
-      'compliance', 'legal', 'regulation', 'ai act', 'gdpr', 'ce marking',
-      'conformity assessment', 'data protection', 'globaltech'
-    ])) {
+    else if (this.containsKeywords(inputLower, ['globaltech']) ||
+             this.containsKeywords(inputLower, ['eu ai act', 'compliance', 'chatbot']) ||
+             this.containsKeywords(inputLower, ['ce marking', 'dpia', 'conformity assessment'])) {
       selectedScenario = simulatedData.scenarios.find(s => s.id === 'legal-compliance-inquiry');
     }
     // Emergency Service
-    else if (this.containsKeywords(inputLower, [
-      'emergency', 'urgent', 'immediate', 'asap', 'water main', 'flooded',
-      'transit', 'tunnel', 'metro', 'service disruption'
-    ])) {
+    else if (this.containsKeywords(inputLower, ['metro transit']) ||
+             this.containsKeywords(inputLower, ['urgent', 'water main break', 'flooded']) ||
+             this.containsKeywords(inputLower, ['union station', 'tunnel', '50,000 gallons'])) {
       selectedScenario = simulatedData.scenarios.find(s => s.id === 'emergency-service-request');
     }
-    // Enterprise RFP
-    else if (this.containsKeywords(inputLower, [
-      'rfp', 'proposal', 'enterprise', 'software solution', 'licensing',
-      'project management', 'crm', 'security features'
-    ])) {
-      selectedScenario = simulatedData.scenarios.find(s => s.id === 'rfp-enterprise');
-    }
     // Billing Support
-    else if (this.containsKeywords(inputLower, [
-      'invoice', 'billing', 'charged', 'account number', 'refund',
-      'downgrade', 'basic plan', 'overcharge'
-    ])) {
+    else if (this.containsKeywords(inputLower, ['acc-789456']) ||
+             this.containsKeywords(inputLower, ['invoice', 'charged $299', 'basic plan']) ||
+             this.containsKeywords(inputLower, ['downgraded', 'refund', 'account number'])) {
       selectedScenario = simulatedData.scenarios.find(s => s.id === 'support-billing');
     }
     // Technical Support
-    else if (this.containsKeywords(inputLower, [
-      'api', 'integration', 'technical', '403 forbidden', 'sync',
-      'app id', 'users affected', 'stopped working'
-    ])) {
+    else if (this.containsKeywords(inputLower, ['app-2024-x71']) ||
+             this.containsKeywords(inputLower, ['api integration', '403 forbidden', '1,200+ users']) ||
+             this.containsKeywords(inputLower, ['sync user data', 'stopped working', 'app id'])) {
       selectedScenario = simulatedData.scenarios.find(s => s.id === 'technical-support');
+    }
+    // Enterprise RFP
+    else if (this.containsKeywords(inputLower, ['500-employee', 'comprehensive software']) ||
+             this.containsKeywords(inputLower, ['project management', 'crm', 'enterprise security']) ||
+             this.containsKeywords(inputLower, ['annual licensing', 'api integrations'])) {
+      selectedScenario = simulatedData.scenarios.find(s => s.id === 'rfp-enterprise');
     }
 
     if (!selectedScenario) {
@@ -134,17 +129,20 @@ export class AgentClient {
             relevance: "Medium",
             section: "Common Questions",
             row_start: 1,
-            row_end: 15
+            row_end: 15,
+            match_reason: "No specific knowledge base matches found for this input type"
           }
         ],
         knowledge_gaps: [
           {
             description: "Input content requires manual review for proper classification",
-            confidence: 0.88
+            confidence: 0.88,
+            gap_reason: "Content doesn't match any known scenario patterns"
           },
           {
             description: "No specific routing rules defined for this type of inquiry",
-            confidence: 0.72
+            confidence: 0.72,
+            gap_reason: "Routing logic needs expansion for this content type"
           }
         ],
         extracted_metadata: {
@@ -169,6 +167,7 @@ export class AgentClient {
     quantity: number;
     category: string;
     confidence?: number;
+    extraction_source?: string;
   }> {
     const items = [];
     
@@ -180,7 +179,8 @@ export class AgentClient {
         description: emailMatch[1],
         quantity: 1,
         category: "Contact Information",
-        confidence: 0.95
+        confidence: 0.95,
+        extraction_source: `Email address found: ${emailMatch[1]}`
       });
     }
 
@@ -193,7 +193,8 @@ export class AgentClient {
           description: match,
           quantity: 1,
           category: "Extracted Value",
-          confidence: 0.7
+          confidence: 0.7,
+          extraction_source: `Numerical value detected: ${match}`
         });
       });
     }
