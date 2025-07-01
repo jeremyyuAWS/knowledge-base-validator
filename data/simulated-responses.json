@@ -1,0 +1,233 @@
+{
+  "scenarios": [
+    {
+      "id": "rfp-enterprise",
+      "title": "Enterprise RFP for Software Licensing",
+      "input": "We are looking for a comprehensive software solution for our 500-employee company. We need:\n\n1. Cloud-based project management tools\n2. Customer relationship management (CRM) system\n3. Enterprise security features\n4. 24/7 support\n5. API integrations with our existing systems\n\nPlease provide pricing for annual licensing, implementation timeline, and security certifications. We need this by Q1 2025.\n\nContact: procurement@acmecorp.com\nBudget: $50,000-$100,000 annually",
+      "response": {
+        "intent": "Request for Proposal - Enterprise Software",
+        "intent_confidence": 0.94,
+        "routing": "Sales Team > Enterprise Solutions",
+        "routing_confidence": 0.91,
+        "confidence": 0.94,
+        "items": [
+          {
+            "sku": "ENT-PM-500",
+            "description": "Enterprise Project Management (500 users)",
+            "quantity": 1,
+            "category": "Software License",
+            "confidence": 0.89
+          },
+          {
+            "sku": "ENT-CRM-500",
+            "description": "Enterprise CRM System (500 users)",
+            "quantity": 1,
+            "category": "Software License",
+            "confidence": 0.87
+          },
+          {
+            "sku": "SEC-ADDON",
+            "description": "Advanced Security Package",
+            "quantity": 1,
+            "category": "Add-on",
+            "confidence": 0.92
+          },
+          {
+            "sku": "SUPPORT-247",
+            "description": "24/7 Premium Support",
+            "quantity": 1,
+            "category": "Service",
+            "confidence": 0.85
+          }
+        ],
+        "kb_matches": [
+          {
+            "title": "Enterprise Pricing Guide 2024",
+            "confidence": 0.92,
+            "relevance": "High",
+            "section": "Annual Licensing Tiers",
+            "row_start": 45,
+            "row_end": 78
+          },
+          {
+            "title": "Security Certifications Overview",
+            "confidence": 0.89,
+            "relevance": "High",
+            "section": "SOC 2, ISO 27001 Details",
+            "row_start": 12,
+            "row_end": 34
+          },
+          {
+            "title": "API Integration Documentation",
+            "confidence": 0.85,
+            "relevance": "Medium",
+            "section": "Third-party Connectors",
+            "row_start": 156,
+            "row_end": 189
+          }
+        ],
+        "knowledge_gaps": [
+          {
+            "description": "No specific pricing for 500-user enterprise tier",
+            "confidence": 0.88
+          },
+          {
+            "description": "Missing Q1 2025 implementation timeline estimates",
+            "confidence": 0.91
+          },
+          {
+            "description": "Contact routing for procurement@acmecorp.com not defined",
+            "confidence": 0.76
+          }
+        ],
+        "extracted_metadata": {
+          "company_size": "500 employees",
+          "budget_range": "$50,000-$100,000",
+          "timeline": "Q1 2025",
+          "contact_email": "procurement@acmecorp.com",
+          "priority": "High"
+        }
+      }
+    },
+    {
+      "id": "support-billing",
+      "title": "Billing Support Inquiry",
+      "input": "Hi, I'm having trouble with my invoice. My account number is ACC-789456 and I was charged $299 last month but I thought I downgraded to the basic plan which should be $99. Can you help me understand what happened? Also, can I get a refund for the difference?",
+      "response": {
+        "intent": "Billing Support - Overcharge Dispute",
+        "intent_confidence": 0.91,
+        "routing": "Customer Support > Billing Team",
+        "routing_confidence": 0.94,
+        "confidence": 0.91,
+        "items": [
+          {
+            "sku": "ACC-789456",
+            "description": "Customer Account Reference",
+            "quantity": 1,
+            "category": "Account ID",
+            "confidence": 0.96
+          },
+          {
+            "sku": "BASIC-PLAN",
+            "description": "Basic Plan ($99/month)",
+            "quantity": 1,
+            "category": "Subscription",
+            "confidence": 0.83
+          }
+        ],
+        "kb_matches": [
+          {
+            "title": "Billing Dispute Resolution Process",
+            "confidence": 0.87,
+            "relevance": "High",
+            "section": "Refund Procedures",
+            "row_start": 23,
+            "row_end": 41
+          },
+          {
+            "title": "Plan Downgrade Policy",
+            "confidence": 0.83,
+            "relevance": "High", 
+            "section": "Effective Date Rules",
+            "row_start": 67,
+            "row_end": 89
+          }
+        ],
+        "knowledge_gaps": [
+          {
+            "description": "No specific policy for mid-cycle plan changes",
+            "confidence": 0.85
+          },
+          {
+            "description": "Refund approval process not clearly documented",
+            "confidence": 0.79
+          }
+        ],
+        "extracted_metadata": {
+          "account_id": "ACC-789456",
+          "disputed_amount": "$200",
+          "expected_plan": "Basic ($99)",
+          "charged_amount": "$299",
+          "issue_type": "Overcharge"
+        }
+      }
+    },
+    {
+      "id": "technical-support",
+      "title": "Technical Integration Issue",
+      "input": "Our API integration stopped working yesterday around 3 PM EST. We're getting 403 Forbidden errors when trying to sync user data. Our app ID is APP-2024-X71. We haven't changed anything on our end. This is affecting 1,200+ users. Please help ASAP.",
+      "response": {
+        "intent": "Technical Support - API Integration Failure",
+        "intent_confidence": 0.96,
+        "routing": "Technical Support > Integration Team",
+        "routing_confidence": 0.98,
+        "confidence": 0.96,
+        "items": [
+          {
+            "sku": "APP-2024-X71",
+            "description": "Application ID",
+            "quantity": 1,
+            "category": "Integration",
+            "confidence": 0.97
+          },
+          {
+            "sku": "API-SYNC",
+            "description": "User Data Synchronization API",
+            "quantity": 1,
+            "category": "Service",
+            "confidence": 0.84
+          }
+        ],
+        "kb_matches": [
+          {
+            "title": "API Error Code Reference",
+            "confidence": 0.94,
+            "relevance": "High",
+            "section": "403 Forbidden Troubleshooting",
+            "row_start": 127,
+            "row_end": 145
+          },
+          {
+            "title": "Integration Health Monitoring",
+            "confidence": 0.88,
+            "relevance": "Medium",
+            "section": "Status Check Procedures",
+            "row_start": 34,
+            "row_end": 52
+          }
+        ],
+        "knowledge_gaps": [
+          {
+            "description": "No documented API changes for Dec 2024",
+            "confidence": 0.92
+          },
+          {
+            "description": "Missing escalation process for 1000+ user impacts",
+            "confidence": 0.87
+          }
+        ],
+        "extracted_metadata": {
+          "app_id": "APP-2024-X71",
+          "error_code": "403 Forbidden",
+          "failure_time": "3 PM EST yesterday",
+          "affected_users": "1,200+",
+          "priority": "Critical"
+        }
+      }
+    }
+  ],
+  "feedback_tags": [
+    "Intent Correct",
+    "Intent Wrong", 
+    "Routing Accurate",
+    "Routing Needs Update",
+    "Items Missing",
+    "Items Incorrect",
+    "KB Match Helpful",
+    "KB Match Irrelevant",
+    "Gaps Well Identified",
+    "Missing Key Gaps",
+    "Response Too Generic",
+    "Response Too Detailed"
+  ]
+}
