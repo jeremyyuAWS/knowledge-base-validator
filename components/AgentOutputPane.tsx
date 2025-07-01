@@ -18,7 +18,8 @@ import {
   Clock,
   TrendingUp,
   Hash,
-  Target
+  Target,
+  Quote
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -34,6 +35,7 @@ interface AgentResponse {
     quantity: number;
     category: string;
     confidence?: number;
+    extraction_source?: string;
   }>;
   kb_matches: Array<{
     title: string;
@@ -42,10 +44,12 @@ interface AgentResponse {
     section: string;
     row_start?: number;
     row_end?: number;
+    match_reason?: string;
   }>;
   knowledge_gaps: Array<{
     description: string;
     confidence?: number;
+    gap_reason?: string;
   }> | string[];
   extracted_metadata: Record<string, any>;
 }
@@ -122,7 +126,7 @@ export default function AgentOutputPane({ response, isProcessing }: AgentOutputP
   // Handle both old format (string array) and new format (object array) for knowledge_gaps
   const normalizedKnowledgeGaps = response.knowledge_gaps.map(gap => 
     typeof gap === 'string' 
-      ? { description: gap, confidence: undefined }
+      ? { description: gap, confidence: undefined, gap_reason: undefined }
       : gap
   );
 
@@ -200,11 +204,19 @@ export default function AgentOutputPane({ response, isProcessing }: AgentOutputP
             <div className="grid gap-2">
               {response.items.map((item, index) => (
                 <div key={index} className="flex items-center justify-between p-3 bg-green-50 rounded-lg">
-                  <div>
+                  <div className="flex-1">
                     <p className="font-medium text-green-900">{item.description}</p>
                     <p className="text-sm text-green-700">SKU: {item.sku}</p>
                     {item.quantity > 1 && (
                       <p className="text-sm text-green-600 mt-1">Qty: {item.quantity}</p>
+                    )}
+                    {item.extraction_source && (
+                      <div className="mt-2 flex items-start gap-1">
+                        <Quote className="w-3 h-3 text-green-500 mt-0.5 flex-shrink-0" />
+                        <p className="text-xs text-green-600 italic">
+                          "{item.extraction_source}"
+                        </p>
+                      </div>
                     )}
                   </div>
                   <div className="text-right space-y-2">
@@ -251,6 +263,14 @@ export default function AgentOutputPane({ response, isProcessing }: AgentOutputP
                           </div>
                         </div>
                       )}
+                      {match.match_reason && (
+                        <div className="mt-2 flex items-start gap-1">
+                          <Quote className="w-3 h-3 text-indigo-500 mt-0.5 flex-shrink-0" />
+                          <p className="text-xs text-indigo-600 italic">
+                            Match reason: {match.match_reason}
+                          </p>
+                        </div>
+                      )}
                     </div>
                     <div className="flex flex-col items-end gap-2">
                       <Badge className={getRelevanceColor(match.relevance)} variant="outline">
@@ -282,7 +302,17 @@ export default function AgentOutputPane({ response, isProcessing }: AgentOutputP
                 <div key={index} className="flex items-start justify-between p-3 bg-amber-50 rounded-lg">
                   <div className="flex items-start gap-3 flex-1">
                     <AlertTriangle className="w-4 h-4 text-amber-600 mt-0.5 flex-shrink-0" />
-                    <p className="text-amber-900">{gap.description}</p>
+                    <div className="flex-1">
+                      <p className="text-amber-900">{gap.description}</p>
+                      {gap.gap_reason && (
+                        <div className="mt-2 flex items-start gap-1">
+                          <Quote className="w-3 h-3 text-amber-500 mt-0.5 flex-shrink-0" />
+                          <p className="text-xs text-amber-600 italic">
+                            Reason: {gap.gap_reason}
+                          </p>
+                        </div>
+                      )}
+                    </div>
                   </div>
                   {gap.confidence && (
                     <div className={cn("px-2 py-1 rounded text-xs font-medium ml-3",
