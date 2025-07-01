@@ -90,6 +90,370 @@
       }
     },
     {
+      "id": "manufacturing-custom-fabrication",
+      "title": "Custom Stainless Steel Fabrication RFP",
+      "input": "Penn Stainless Products is requesting quotes for custom fabrication work:\n\n• 50x stainless steel tanks (316L grade)\n• Dimensions: 4ft diameter x 8ft height\n• Wall thickness: 3/16 inch minimum\n• Internal polished finish (150 grit)\n• ASME pressure vessel certification required\n• Delivery needed by March 15, 2025\n• Installation at our Johnstown, PA facility\n\nWe also need:\n- Material test certificates (MTCs)\n- Welding procedure specifications (WPS)\n- Non-destructive testing (NDT) reports\n- Hydrostatic testing at 150 PSI\n\nPlease include lead times and warranty terms.\nContact: engineering@pennstainless.com\nProject #: PSP-2025-TANK-001",
+      "response": {
+        "intent": "Manufacturing RFP - Custom Fabrication",
+        "intent_confidence": 0.96,
+        "routing": "Manufacturing Team > Custom Fabrication",
+        "routing_confidence": 0.94,
+        "confidence": 0.96,
+        "items": [
+          {
+            "sku": "TANK-316L-4X8",
+            "description": "Stainless Steel Tank 316L (4ft x 8ft)",
+            "quantity": 50,
+            "category": "Custom Fabrication",
+            "confidence": 0.93
+          },
+          {
+            "sku": "CERT-ASME",
+            "description": "ASME Pressure Vessel Certification",
+            "quantity": 50,
+            "category": "Certification",
+            "confidence": 0.91
+          },
+          {
+            "sku": "FINISH-150",
+            "description": "Internal Polish Finish (150 grit)",
+            "quantity": 50,
+            "category": "Surface Treatment",
+            "confidence": 0.89
+          },
+          {
+            "sku": "TEST-HYDRO",
+            "description": "Hydrostatic Testing (150 PSI)",
+            "quantity": 50,
+            "category": "Quality Testing",
+            "confidence": 0.87
+          },
+          {
+            "sku": "INSTALL-PA",
+            "description": "Installation Service (Johnstown, PA)",
+            "quantity": 1,
+            "category": "Installation",
+            "confidence": 0.84
+          }
+        ],
+        "kb_matches": [
+          {
+            "title": "316L Stainless Steel Specifications",
+            "confidence": 0.95,
+            "relevance": "High",
+            "section": "Material Properties & Applications",
+            "row_start": 78,
+            "row_end": 112
+          },
+          {
+            "title": "ASME Pressure Vessel Standards",
+            "confidence": 0.92,
+            "relevance": "High",
+            "section": "Section VIII Div 1 Requirements",
+            "row_start": 234,
+            "row_end": 267
+          },
+          {
+            "title": "Custom Fabrication Lead Times",
+            "confidence": 0.88,
+            "relevance": "High",
+            "section": "Complex Tank Production",
+            "row_start": 45,
+            "row_end": 73
+          },
+          {
+            "title": "NDT Testing Procedures",
+            "confidence": 0.86,
+            "relevance": "Medium",
+            "section": "Ultrasonic & Radiographic Testing",
+            "row_start": 156,
+            "row_end": 189
+          }
+        ],
+        "knowledge_gaps": [
+          {
+            "description": "No specific pricing for 316L tanks with ASME certification",
+            "confidence": 0.91
+          },
+          {
+            "description": "Installation logistics for Johnstown, PA not documented",
+            "confidence": 0.87
+          },
+          {
+            "description": "Lead time for 50-unit custom fabrication orders unclear",
+            "confidence": 0.84
+          },
+          {
+            "description": "Warranty terms for pressure vessels not specified",
+            "confidence": 0.79
+          }
+        ],
+        "extracted_metadata": {
+          "material_grade": "316L Stainless Steel",
+          "quantity": "50 units",
+          "dimensions": "4ft diameter x 8ft height",
+          "certification": "ASME Pressure Vessel",
+          "delivery_date": "March 15, 2025",
+          "location": "Johnstown, PA",
+          "project_number": "PSP-2025-TANK-001",
+          "pressure_rating": "150 PSI",
+          "priority": "High"
+        }
+      }
+    },
+    {
+      "id": "construction-project-bid",
+      "title": "Commercial Construction Project Bid",
+      "input": "Tiny's Construction LLC is bidding on the River Valley Shopping Center expansion:\n\nScope of Work:\n- 45,000 sq ft retail addition\n- Concrete foundation and slab (8 inch thickness)\n- Steel frame construction (150 tons structural steel)\n- Roofing system with TPO membrane\n- HVAC rough-in for 12 units\n- Electrical rough-in (480V/277V, 1200A service)\n- Plumbing rough-in for 8 restroom facilities\n- Fire sprinkler system rough-in\n\nProject Timeline: 18 months\nStart Date: April 1, 2025\nCompletion: October 1, 2026\n\nRequired Certifications:\n- OSHA 30-hour certification for all supervisors\n- Prevailing wage compliance\n- Minority Business Enterprise (MBE) participation 15%\n- Environmental compliance (stormwater management)\n\nSubmit bids by February 15, 2025\nContact: projects@tinysconstruction.com\nBond Required: $2.5M Performance Bond",
+      "response": {
+        "intent": "Construction Bid Submission",
+        "intent_confidence": 0.97,
+        "routing": "Construction Team > Commercial Projects",
+        "routing_confidence": 0.95,
+        "confidence": 0.97,
+        "items": [
+          {
+            "sku": "CONCRETE-SLAB",
+            "description": "Concrete Foundation & Slab (45,000 sq ft, 8 inch)",
+            "quantity": 45000,
+            "category": "Foundation Work",
+            "confidence": 0.95
+          },
+          {
+            "sku": "STEEL-FRAME",
+            "description": "Structural Steel Frame (150 tons)",
+            "quantity": 150,
+            "category": "Structural",
+            "confidence": 0.93
+          },
+          {
+            "sku": "ROOF-TPO",
+            "description": "TPO Membrane Roofing System",
+            "quantity": 1,
+            "category": "Roofing",
+            "confidence": 0.91
+          },
+          {
+            "sku": "HVAC-ROUGH",
+            "description": "HVAC Rough-in (12 units)",
+            "quantity": 12,
+            "category": "Mechanical",
+            "confidence": 0.89
+          },
+          {
+            "sku": "ELEC-SERVICE",
+            "description": "Electrical Service (480V/277V, 1200A)",
+            "quantity": 1,
+            "category": "Electrical",
+            "confidence": 0.87
+          },
+          {
+            "sku": "PLUMB-ROUGH",
+            "description": "Plumbing Rough-in (8 restroom facilities)",
+            "quantity": 8,
+            "category": "Plumbing",
+            "confidence": 0.85
+          },
+          {
+            "sku": "SPRINKLER-SYS",
+            "description": "Fire Sprinkler System Rough-in",
+            "quantity": 1,
+            "category": "Fire Safety",
+            "confidence": 0.83
+          }
+        ],
+        "kb_matches": [
+          {
+            "title": "Commercial Construction Standards",
+            "confidence": 0.94,
+            "relevance": "High",
+            "section": "Retail Space Requirements",
+            "row_start": 89,
+            "row_end": 134
+          },
+          {
+            "title": "Prevailing Wage Compliance Guide",
+            "confidence": 0.91,
+            "relevance": "High",
+            "section": "Documentation Requirements",
+            "row_start": 45,
+            "row_end": 78
+          },
+          {
+            "title": "OSHA Safety Requirements",
+            "confidence": 0.89,
+            "relevance": "High",
+            "section": "30-Hour Certification Standards",
+            "row_start": 156,
+            "row_end": 201
+          },
+          {
+            "title": "MBE Participation Guidelines",
+            "confidence": 0.86,
+            "relevance": "Medium",
+            "section": "15% Participation Requirements",
+            "row_start": 234,
+            "row_end": 267
+          }
+        ],
+        "knowledge_gaps": [
+          {
+            "description": "Specific costs for 45,000 sq ft retail construction not available",
+            "confidence": 0.93
+          },
+          {
+            "description": "River Valley Shopping Center site conditions unknown",
+            "confidence": 0.89
+          },
+          {
+            "description": "Local MBE subcontractor database needs update",
+            "confidence": 0.82
+          },
+          {
+            "description": "Performance bond requirements for $2.5M projects unclear",
+            "confidence": 0.78
+          }
+        ],
+        "extracted_metadata": {
+          "project_size": "45,000 sq ft",
+          "project_type": "Retail Addition",
+          "timeline": "18 months",
+          "start_date": "April 1, 2025",
+          "completion_date": "October 1, 2026",
+          "bond_required": "$2.5M Performance Bond",
+          "mbe_requirement": "15%",
+          "bid_deadline": "February 15, 2025",
+          "priority": "High"
+        }
+      }
+    },
+    {
+      "id": "energy-renewable-project",
+      "title": "Renewable Energy Grid Integration Proposal",
+      "input": "Novitium Energy Solutions is proposing a utility-scale solar farm project:\n\nProject Specifications:\n- 250 MW solar photovoltaic installation\n- 1,200 acres land requirement\n- Battery Energy Storage System (BESS) - 100 MW / 400 MWh\n- Grid interconnection at 138kV transmission level\n- Power Purchase Agreement (PPA) for 25 years\n- Commercial Operation Date (COD): December 2026\n\nRegulatory Requirements:\n- Environmental Impact Assessment (EIA)\n- Federal Aviation Administration (FAA) clearance\n- Endangered Species Act (ESA) consultation\n- Cultural resources survey\n- Interconnection studies (System Impact & Facilities)\n\nFinancial Structure:\n- Investment Tax Credit (ITC) optimization\n- Debt financing: $180M construction loan\n- Tax equity partnership structure\n- Revenue projections: $25M annually\n\nKey Deliverables:\n- Feasibility study report\n- Grid impact analysis\n- Environmental permitting timeline\n- Construction milestone schedule\n\nContact: development@novitiumenergy.com\nProject Code: NE-SOLAR-2025-TX-001",
+      "response": {
+        "intent": "Renewable Energy Project Proposal",
+        "intent_confidence": 0.98,
+        "routing": "Energy Team > Renewable Development",
+        "routing_confidence": 0.96,
+        "confidence": 0.98,
+        "items": [
+          {
+            "sku": "SOLAR-PV-250MW",
+            "description": "Solar PV Installation (250 MW)",
+            "quantity": 1,
+            "category": "Generation Equipment",
+            "confidence": 0.97
+          },
+          {
+            "sku": "BESS-100MW",
+            "description": "Battery Energy Storage System (100MW/400MWh)",
+            "quantity": 1,
+            "category": "Energy Storage",
+            "confidence": 0.95
+          },
+          {
+            "sku": "INTERCONNECT-138KV",
+            "description": "Grid Interconnection (138kV)",
+            "quantity": 1,
+            "category": "Transmission",
+            "confidence": 0.93
+          },
+          {
+            "sku": "PPA-25YR",
+            "description": "Power Purchase Agreement (25 years)",
+            "quantity": 1,
+            "category": "Commercial Agreement",
+            "confidence": 0.91
+          },
+          {
+            "sku": "LAND-1200AC",
+            "description": "Land Requirement (1,200 acres)",
+            "quantity": 1200,
+            "category": "Real Estate",
+            "confidence": 0.89
+          }
+        ],
+        "kb_matches": [
+          {
+            "title": "Utility-Scale Solar Development Guide",
+            "confidence": 0.96,
+            "relevance": "High",
+            "section": "250MW+ Project Requirements",
+            "row_start": 123,
+            "row_end": 178
+          },
+          {
+            "title": "Grid Interconnection Procedures",
+            "confidence": 0.94,
+            "relevance": "High",
+            "section": "138kV Transmission Interconnection",
+            "row_start": 234,
+            "row_end": 289
+          },
+          {
+            "title": "Environmental Permitting Timeline",
+            "confidence": 0.91,
+            "relevance": "High",
+            "section": "EIA and ESA Consultation Process",
+            "row_start": 345,
+            "row_end": 398
+          },
+          {
+            "title": "Investment Tax Credit Guidelines",
+            "confidence": 0.89,
+            "relevance": "Medium",
+            "section": "ITC Optimization Strategies",
+            "row_start": 456,
+            "row_end": 501
+          },
+          {
+            "title": "Battery Storage Economics",
+            "confidence": 0.87,
+            "relevance": "Medium",
+            "section": "100MW+ BESS Projects",
+            "row_start": 567,
+            "row_end": 612
+          }
+        ],
+        "knowledge_gaps": [
+          {
+            "description": "Texas-specific interconnection queue timelines not current",
+            "confidence": 0.92
+          },
+          {
+            "description": "Current ITC rates for 2026 COD projects unclear",
+            "confidence": 0.88
+          },
+          {
+            "description": "Land acquisition costs for 1,200-acre solar projects in Texas",
+            "confidence": 0.85
+          },
+          {
+            "description": "Environmental permitting timeline varies by state/region",
+            "confidence": 0.81
+          },
+          {
+            "description": "Tax equity market conditions for 2025-2026 projects",
+            "confidence": 0.76
+          }
+        ],
+        "extracted_metadata": {
+          "capacity": "250 MW",
+          "storage_capacity": "100 MW / 400 MWh",
+          "land_requirement": "1,200 acres",
+          "voltage_level": "138kV",
+          "ppa_term": "25 years",
+          "cod_target": "December 2026",
+          "financing_amount": "$180M",
+          "annual_revenue": "$25M",
+          "project_code": "NE-SOLAR-2025-TX-001",
+          "location": "Texas",
+          "priority": "Critical"
+        }
+      }
+    },
+    {
       "id": "support-billing",
       "title": "Billing Support Inquiry",
       "input": "Hi, I'm having trouble with my invoice. My account number is ACC-789456 and I was charged $299 last month but I thought I downgraded to the basic plan which should be $99. Can you help me understand what happened? Also, can I get a refund for the difference?",
@@ -214,6 +578,234 @@
           "priority": "Critical"
         }
       }
+    },
+    {
+      "id": "legal-compliance-inquiry",
+      "title": "Legal Compliance & Regulatory Inquiry",
+      "input": "GlobalTech Industries needs urgent clarification on new EU AI Act requirements:\n\nOur AI-powered customer service chatbot processes 50,000+ daily interactions across EU markets. We need to understand:\n\n• Classification under the AI Act (high-risk vs limited risk)\n• Documentation requirements for compliance\n• CE marking and conformity assessment procedures\n• Data protection impact assessment (DPIA) updates\n• Timeline for compliance implementation\n\nAdditional concerns:\n- Cross-border data transfers (EU to US servers)\n- Model transparency and explainability requirements\n- Third-party AI vendor liability sharing\n- Staff training on AI governance frameworks\n\nDeadline: Full compliance required by August 2, 2025\nBudget allocated: €150,000 for legal consultancy\nContact: legal@globaltech-industries.eu\nInternal Reference: GTI-AIACT-2025-001\n\nThis affects our operations in Germany, France, Netherlands, and Spain.",
+      "response": {
+        "intent": "Legal Compliance - EU AI Act Requirements",
+        "intent_confidence": 0.95,
+        "routing": "Legal Team > AI Compliance",
+        "routing_confidence": 0.97,
+        "confidence": 0.95,
+        "items": [
+          {
+            "sku": "AIACT-COMPLIANCE",
+            "description": "EU AI Act Compliance Assessment",
+            "quantity": 1,
+            "category": "Legal Service",
+            "confidence": 0.94
+          },
+          {
+            "sku": "CE-MARKING",
+            "description": "CE Marking and Conformity Assessment",
+            "quantity": 1,
+            "category": "Certification",
+            "confidence": 0.91
+          },
+          {
+            "sku": "DPIA-UPDATE",
+            "description": "Data Protection Impact Assessment Update",
+            "quantity": 1,
+            "category": "Privacy Compliance",
+            "confidence": 0.89
+          },
+          {
+            "sku": "STAFF-TRAINING",
+            "description": "AI Governance Training Program",
+            "quantity": 1,
+            "category": "Training Service",
+            "confidence": 0.86
+          },
+          {
+            "sku": "VENDOR-REVIEW",
+            "description": "Third-party AI Vendor Liability Review",
+            "quantity": 1,
+            "category": "Risk Assessment",
+            "confidence": 0.83
+          }
+        ],
+        "kb_matches": [
+          {
+            "title": "EU AI Act Implementation Guide",
+            "confidence": 0.96,
+            "relevance": "High",
+            "section": "High-Risk AI System Classification",
+            "row_start": 234,
+            "row_end": 289
+          },
+          {
+            "title": "CE Marking Requirements for AI",
+            "confidence": 0.93,
+            "relevance": "High",
+            "section": "Conformity Assessment Procedures",
+            "row_start": 345,
+            "row_end": 398
+          },
+          {
+            "title": "Cross-Border Data Transfer Compliance",
+            "confidence": 0.89,
+            "relevance": "High",
+            "section": "EU-US Data Transfer Mechanisms",
+            "row_start": 456,
+            "row_end": 501
+          },
+          {
+            "title": "AI Model Transparency Standards",
+            "confidence": 0.87,
+            "relevance": "Medium",
+            "section": "Explainability Requirements",
+            "row_start": 567,
+            "row_end": 612
+          }
+        ],
+        "knowledge_gaps": [
+          {
+            "description": "Latest AI Act enforcement guidelines not yet available",
+            "confidence": 0.91
+          },
+          {
+            "description": "Specific requirements for customer service chatbots unclear",
+            "confidence": 0.87
+          },
+          {
+            "description": "Multi-country compliance coordination procedures needed",
+            "confidence": 0.84
+          },
+          {
+            "description": "August 2025 compliance timeline feasibility uncertain",
+            "confidence": 0.79
+          }
+        ],
+        "extracted_metadata": {
+          "ai_system_type": "Customer Service Chatbot",
+          "daily_interactions": "50,000+",
+          "geographic_scope": "Germany, France, Netherlands, Spain",
+          "compliance_deadline": "August 2, 2025",
+          "budget": "€150,000",
+          "reference_number": "GTI-AIACT-2025-001",
+          "priority": "Critical"
+        }
+      }
+    },
+    {
+      "id": "emergency-service-request",
+      "title": "Emergency Infrastructure Service Request",
+      "input": "URGENT: Metro Transit Authority emergency repair needed\n\nSituation: Water main break flooded Union Station tunnel section B-7 at 2:47 AM\n\nImmediate Requirements:\n• Emergency water extraction (estimated 50,000 gallons)\n• Structural integrity assessment of tunnel walls\n• Electrical system safety inspection (480V power distribution affected)\n• Track bed stabilization and re-ballasting\n• Temporary ventilation system installation\n• 24/7 security for work zone\n\nService Disruption:\n- Blue and Red lines suspended\n- 85,000 daily passengers affected\n- Alternative bus service activated\n- Media relations coordination required\n\nContractor Requirements:\n- Active emergency response certification\n- $5M liability insurance minimum\n- Union labor force (Local 825)\n- Environmental hazmat clearance\n- City permit expediting capability\n\nTarget: Service restoration within 72 hours\nEstimated Cost: $500,000 - $750,000\nContact: emergency@metrotransit.gov\nIncident #: MTA-EMR-2025-001\n\nThis is affecting morning commute for downtown business district.",
+      "response": {
+        "intent": "Emergency Infrastructure Repair",
+        "intent_confidence": 0.98,
+        "routing": "Emergency Response Team > Infrastructure",
+        "routing_confidence": 0.99,
+        "confidence": 0.98,
+        "items": [
+          {
+            "sku": "WATER-EXTRACT",
+            "description": "Emergency Water Extraction (50,000 gallons)",
+            "quantity": 50000,
+            "category": "Emergency Service",
+            "confidence": 0.97
+          },
+          {
+            "sku": "STRUCT-ASSESS",
+            "description": "Structural Integrity Assessment",
+            "quantity": 1,
+            "category": "Engineering Service",
+            "confidence": 0.95
+          },
+          {
+            "sku": "ELEC-INSPECT",
+            "description": "Electrical Safety Inspection (480V)",
+            "quantity": 1,
+            "category": "Safety Inspection",
+            "confidence": 0.93
+          },
+          {
+            "sku": "TRACK-REPAIR",
+            "description": "Track Bed Stabilization & Re-ballasting",
+            "quantity": 1,
+            "category": "Track Work",
+            "confidence": 0.91
+          },
+          {
+            "sku": "VENT-TEMP",
+            "description": "Temporary Ventilation System",
+            "quantity": 1,
+            "category": "Life Safety",
+            "confidence": 0.89
+          },
+          {
+            "sku": "SECURITY-24HR",
+            "description": "24/7 Work Zone Security",
+            "quantity": 3,
+            "category": "Security Service",
+            "confidence": 0.86
+          }
+        ],
+        "kb_matches": [
+          {
+            "title": "Emergency Response Procedures",
+            "confidence": 0.97,
+            "relevance": "High",
+            "section": "Transit System Water Damage Protocol",
+            "row_start": 123,
+            "row_end": 178
+          },
+          {
+            "title": "Union Station Infrastructure Plans",
+            "confidence": 0.94,
+            "relevance": "High",
+            "section": "Tunnel Section B-7 Specifications",
+            "row_start": 234,
+            "row_end": 289
+          },
+          {
+            "title": "Contractor Emergency Certification",
+            "confidence": 0.91,
+            "relevance": "High",
+            "section": "Required Certifications & Insurance",
+            "row_start": 345,
+            "row_end": 398
+          },
+          {
+            "title": "Service Restoration Timeline",
+            "confidence": 0.88,
+            "relevance": "Medium",
+            "section": "72-Hour Recovery Procedures",
+            "row_start": 456,
+            "row_end": 501
+          }
+        ],
+        "knowledge_gaps": [
+          {
+            "description": "Water source and pressure data for tunnel section B-7",
+            "confidence": 0.93
+          },
+          {
+            "description": "Current contractor availability for emergency response",
+            "confidence": 0.89
+          },
+          {
+            "description": "Alternative service capacity during extended outage",
+            "confidence": 0.85
+          },
+          {
+            "description": "Environmental impact assessment for tunnel flooding",
+            "confidence": 0.81
+          }
+        ],
+        "extracted_metadata": {
+          "incident_time": "2:47 AM",
+          "location": "Union Station tunnel section B-7",
+          "affected_lines": "Blue and Red lines",
+          "passenger_impact": "85,000 daily passengers",
+          "restoration_target": "72 hours",
+          "cost_estimate": "$500,000 - $750,000",
+          "incident_number": "MTA-EMR-2025-001",
+          "priority": "Emergency"
+        }
+      }
     }
   ],
   "feedback_tags": [
@@ -223,11 +815,22 @@
     "Routing Needs Update",
     "Items Missing",
     "Items Incorrect",
+    "Items Comprehensive",
     "KB Match Helpful",
     "KB Match Irrelevant",
     "Gaps Well Identified",
     "Missing Key Gaps",
     "Response Too Generic",
-    "Response Too Detailed"
+    "Response Too Detailed",
+    "Technical Accuracy High",
+    "Technical Accuracy Low",
+    "Industry Knowledge Strong",
+    "Industry Knowledge Weak",
+    "Compliance Understanding Good",
+    "Compliance Understanding Poor",
+    "Urgency Recognized",
+    "Urgency Missed",
+    "Cost Estimation Helpful",
+    "Cost Estimation Missing"
   ]
 }

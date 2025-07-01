@@ -5,7 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Loader2, FileText, Mail, MessageCircle, Sparkles } from "lucide-react";
+import { Loader2, FileText, Mail, MessageCircle, Sparkles, Factory, HardHat, Zap, Scale, AlertTriangle } from "lucide-react";
 import simulatedData from "@/data/simulated-responses.json";
 
 interface InputPaneProps {
@@ -21,14 +21,24 @@ export default function InputPane({ input, setInput, onAnalyze, isProcessing }: 
   const detectInputType = (text: string) => {
     if (text.length < 10) return null;
     
-    if (text.toLowerCase().includes("rfp") || text.toLowerCase().includes("proposal")) {
-      return "RFP";
-    } else if (text.includes("@") && (text.toLowerCase().includes("invoice") || text.toLowerCase().includes("billing"))) {
-      return "Support Email";
-    } else if (text.toLowerCase().includes("api") || text.toLowerCase().includes("integration")) {
+    const textLower = text.toLowerCase();
+    
+    if (textLower.includes("stainless steel") || textLower.includes("fabrication") || textLower.includes("manufacturing")) {
+      return "Manufacturing RFP";
+    } else if (textLower.includes("construction") || textLower.includes("building") || textLower.includes("concrete")) {
+      return "Construction Bid";
+    } else if (textLower.includes("solar") || textLower.includes("energy") || textLower.includes("renewable")) {
+      return "Energy Project";
+    } else if (textLower.includes("compliance") || textLower.includes("legal") || textLower.includes("regulation")) {
+      return "Legal Compliance";
+    } else if (textLower.includes("emergency") || textLower.includes("urgent") || textLower.includes("immediate")) {
+      return "Emergency Service";
+    } else if (textLower.includes("rfp") || textLower.includes("proposal") || textLower.includes("enterprise")) {
+      return "Enterprise RFP";
+    } else if (textLower.includes("invoice") || textLower.includes("billing") || textLower.includes("charged")) {
+      return "Support Request";
+    } else if (textLower.includes("api") || textLower.includes("integration") || textLower.includes("technical")) {
       return "Technical Support";
-    } else if (text.toLowerCase().includes("quote") || text.toLowerCase().includes("pricing")) {
-      return "Sales Inquiry";
     }
     return "General Inquiry";
   };
@@ -48,12 +58,56 @@ export default function InputPane({ input, setInput, onAnalyze, isProcessing }: 
 
   const getTypeIcon = (type: string) => {
     switch (type) {
-      case "RFP": return <FileText className="w-4 h-4" />;
-      case "Support Email": return <Mail className="w-4 h-4" />;
+      case "Manufacturing RFP": return <Factory className="w-4 h-4" />;
+      case "Construction Bid": return <HardHat className="w-4 h-4" />;
+      case "Energy Project": return <Zap className="w-4 h-4" />;
+      case "Legal Compliance": return <Scale className="w-4 h-4" />;
+      case "Emergency Service": return <AlertTriangle className="w-4 h-4" />;
+      case "Enterprise RFP": return <FileText className="w-4 h-4" />;
+      case "Support Request": return <Mail className="w-4 h-4" />;
       case "Technical Support": return <MessageCircle className="w-4 h-4" />;
       default: return <MessageCircle className="w-4 h-4" />;
     }
   };
+
+  const examples = [
+    {
+      id: "manufacturing-custom-fabrication",
+      title: "Manufacturing RFP",
+      subtitle: "Custom stainless steel fabrication (Penn Stainless style)",
+      icon: <Factory className="w-4 h-4" />
+    },
+    {
+      id: "construction-project-bid",
+      title: "Construction Bid",
+      subtitle: "Commercial construction project (Tiny's Construction style)",
+      icon: <HardHat className="w-4 h-4" />
+    },
+    {
+      id: "energy-renewable-project",
+      title: "Energy Project",
+      subtitle: "Renewable energy grid integration (Novitium Energy style)",
+      icon: <Zap className="w-4 h-4" />
+    },
+    {
+      id: "legal-compliance-inquiry",
+      title: "Legal Compliance",
+      subtitle: "EU AI Act regulatory requirements",
+      icon: <Scale className="w-4 h-4" />
+    },
+    {
+      id: "emergency-service-request",
+      title: "Emergency Service",
+      subtitle: "Infrastructure emergency repair request",
+      icon: <AlertTriangle className="w-4 h-4" />
+    },
+    {
+      id: "rfp-enterprise",
+      title: "Enterprise RFP",
+      subtitle: "Software licensing for 500 employees",
+      icon: <FileText className="w-4 h-4" />
+    }
+  ];
 
   return (
     <Card className="h-fit">
@@ -65,7 +119,7 @@ export default function InputPane({ input, setInput, onAnalyze, isProcessing }: 
               Input Analysis
             </CardTitle>
             <CardDescription>
-              Paste your RFP, email, or support request below
+              Paste your RFP, project bid, proposal, or support request below
             </CardDescription>
           </div>
           {detectedType && (
@@ -105,61 +159,28 @@ export default function InputPane({ input, setInput, onAnalyze, isProcessing }: 
           </Button>
 
           <div className="space-y-2">
-            <p className="text-sm font-medium text-gray-700">Try these examples:</p>
+            <p className="text-sm font-medium text-gray-700">Try these industry examples:</p>
             <div className="grid grid-cols-1 gap-2">
-              <Button 
-                variant="outline" 
-                size="sm"
-                onClick={() => loadExample("rfp-enterprise")}
-                className="text-left justify-start h-auto p-3"
-                disabled={isProcessing}
-              >
-                <div>
-                  <div className="flex items-center gap-2 font-medium">
-                    <FileText className="w-4 h-4" />
-                    Enterprise RFP
+              {examples.map((example) => (
+                <Button 
+                  key={example.id}
+                  variant="outline" 
+                  size="sm"
+                  onClick={() => loadExample(example.id)}
+                  className="text-left justify-start h-auto p-3"
+                  disabled={isProcessing}
+                >
+                  <div>
+                    <div className="flex items-center gap-2 font-medium">
+                      {example.icon}
+                      {example.title}
+                    </div>
+                    <div className="text-xs text-gray-500 mt-1">
+                      {example.subtitle}
+                    </div>
                   </div>
-                  <div className="text-xs text-gray-500 mt-1">
-                    Software licensing request for 500 employees
-                  </div>
-                </div>
-              </Button>
-              
-              <Button 
-                variant="outline" 
-                size="sm"
-                onClick={() => loadExample("support-billing")}
-                className="text-left justify-start h-auto p-3"
-                disabled={isProcessing}
-              >
-                <div>
-                  <div className="flex items-center gap-2 font-medium">
-                    <Mail className="w-4 h-4" />
-                    Billing Support
-                  </div>
-                  <div className="text-xs text-gray-500 mt-1">
-                    Customer invoice discrepancy inquiry
-                  </div>
-                </div>
-              </Button>
-              
-              <Button 
-                variant="outline" 
-                size="sm"
-                onClick={() => loadExample("technical-support")}
-                className="text-left justify-start h-auto p-3"
-                disabled={isProcessing}
-              >
-                <div>
-                  <div className="flex items-center gap-2 font-medium">
-                    <MessageCircle className="w-4 h-4" />
-                    API Integration Issue
-                  </div>
-                  <div className="text-xs text-gray-500 mt-1">
-                    Technical support for API failures
-                  </div>
-                </div>
-              </Button>
+                </Button>
+              ))}
             </div>
           </div>
         </div>
