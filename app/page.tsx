@@ -80,6 +80,8 @@ export default function Home() {
   };
 
   const handleFeedbackSubmit = (feedback: any) => {
+    if (!isClient) return;
+    
     try {
       const savedFeedback = FeedbackStorage.saveFeedback({
         input_preview: currentInput.substring(0, 100) + (currentInput.length > 100 ? '...' : ''),
@@ -117,121 +119,6 @@ export default function Home() {
   };
 
   const isLiveConfigured = agentConfig.endpoint && agentConfig.apiKey;
-
-  // Don't render client-specific content until hydration is complete
-  if (!isClient) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
-        <div className="container mx-auto px-4 py-6">
-          {/* Header */}
-          <div className="flex items-center justify-between mb-8">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
-                <Database className="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <h1 className="text-2xl font-bold text-gray-900">Knowledge Base Validator</h1>
-                <p className="text-gray-600">Validate AI responses to unstructured input</p>
-              </div>
-            </div>
-            
-            <div className="flex items-center gap-4">
-              {/* Mode Toggle */}
-              <div className="flex items-center gap-3 p-3 bg-white rounded-lg border shadow-sm">
-                <div className="flex items-center gap-2">
-                  <TestTube className="w-4 h-4 text-blue-600" />
-                  <Label htmlFor="mode-toggle" className="text-sm font-medium cursor-pointer">
-                    Demo
-                  </Label>
-                </div>
-                
-                <Switch
-                  id="mode-toggle"
-                  checked={false}
-                  disabled
-                />
-                
-                <div className="flex items-center gap-2">
-                  <Label htmlFor="mode-toggle" className="text-sm font-medium cursor-pointer">
-                    Live
-                  </Label>
-                  <Globe className="w-4 h-4 text-green-600" />
-                </div>
-              </div>
-
-              {/* Mode Status Badge */}
-              <div className="flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-700">
-                <Zap className="w-4 h-4" />
-                Demo Mode
-              </div>
-
-              <Button
-                variant="outline"
-                size="sm"
-                disabled
-                className="gap-2"
-              >
-                <HelpCircle className="w-4 h-4" />
-                Help
-              </Button>
-            </div>
-          </div>
-
-          {/* Main Content */}
-          <Tabs defaultValue="validate" className="space-y-6">
-            <TabsList className="grid w-full grid-cols-3 lg:w-auto lg:grid-cols-3">
-              <TabsTrigger value="validate" className="gap-2">
-                <MessageSquare className="w-4 h-4" />
-                Validate
-              </TabsTrigger>
-              <TabsTrigger value="history" className="gap-2">
-                <BarChart3 className="w-4 h-4" />
-                History
-              </TabsTrigger>
-              <TabsTrigger value="settings" className="gap-2">
-                <Settings className="w-4 h-4" />
-                Settings
-              </TabsTrigger>
-            </TabsList>
-
-            <TabsContent value="validate" className="space-y-6">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                {/* Input Section */}
-                <div className="space-y-6">
-                  <InputPane 
-                    input=""
-                    setInput={() => {}}
-                    onAnalyze={() => {}}
-                    isProcessing={false}
-                  />
-                </div>
-
-                {/* Output Section */}
-                <div className="space-y-6">
-                  <AgentOutputPane 
-                    response={null}
-                    isProcessing={false}
-                  />
-                </div>
-              </div>
-            </TabsContent>
-
-            <TabsContent value="history">
-              <HistoryReview />
-            </TabsContent>
-
-            <TabsContent value="settings">
-              <SettingsPanel 
-                mode="simulated"
-                onModeChange={() => {}}
-                onConfigUpdate={() => {}}
-              />
-            </TabsContent>
-          </Tabs>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
