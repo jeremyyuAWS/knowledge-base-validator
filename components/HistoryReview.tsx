@@ -48,7 +48,7 @@ export default function HistoryReview() {
   const positiveCount = feedback.filter(f => f.rating === "positive").length;
   const negativeCount = feedback.filter(f => f.rating === "negative").length;
   const totalCount = feedback.length;
-  const positiveRate = totalCount > 0 ? (positiveCount / totalCount * 100).toFixed(1) : 0;
+  const positiveRate = totalCount > 0 ? (positiveCount / totalCount * 100).toFixed(1) : "0";
 
   const allTags = [...new Set(feedback.flatMap(f => f.tags))];
 
