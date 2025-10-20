@@ -5,7 +5,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
-import { HelpCircle, Zap, Database, MessageSquare, Settings, BarChart3, TestTube, Globe } from "lucide-react";
+import { CircleHelp as HelpCircle, Zap, Database, MessageSquare, Settings, ChartBar as BarChart3, TestTube, Globe } from "lucide-react";
 import InputPane from "@/components/InputPane";
 import AgentOutputPane from "@/components/AgentOutputPane";
 import FeedbackPanel from "@/components/FeedbackPanel";
@@ -14,7 +14,7 @@ import KnowledgeBase from "@/components/KnowledgeBase";
 import SettingsPanel from "@/components/SettingsPanel";
 import WelcomeModal from "@/components/WelcomeModal";
 import { getAgentClient, type AgentResponse } from "@/lib/agentClient";
-import { HelpCircle, Zap, Database, MessageSquare, Settings, BarChart3, TestTube, Globe, BookOpen } from "lucide-react";
+import { CircleHelp as HelpCircle, Zap, Database, MessageSquare, Settings, ChartBar as BarChart3, TestTube, Globe, BookOpen } from "lucide-react";
 
 export default function Home() {
   const [isClient, setIsClient] = useState(false);

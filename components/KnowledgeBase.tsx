@@ -10,24 +10,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Separator } from "@/components/ui/separator";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
-import { 
-  Upload, 
-  Plus, 
-  Search, 
-  Filter, 
-  FileText, 
-  Link, 
-  Edit, 
-  Trash2, 
-  Tag,
-  BookOpen,
-  Globe,
-  FolderOpen,
-  ChevronRight,
-  Calendar,
-  FileIcon,
-  ExternalLink
-} from "lucide-react";
+import { Upload, Plus, Search, Filter, FileText, Link, CreditCard as Edit, Trash2, Tag, BookOpen, Globe, FolderOpen, ChevronRight, Calendar, File as FileIcon, ExternalLink } from "lucide-react";
 import { KBStorage, KBEntry, KBCategory } from "@/lib/kbStorage";
 import { cn } from "@/lib/utils";
 
