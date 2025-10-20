@@ -10,10 +10,11 @@ import InputPane from "@/components/InputPane";
 import AgentOutputPane from "@/components/AgentOutputPane";
 import FeedbackPanel from "@/components/FeedbackPanel";
 import HistoryReview from "@/components/HistoryReview";
+import KnowledgeBase from "@/components/KnowledgeBase";
 import SettingsPanel from "@/components/SettingsPanel";
 import WelcomeModal from "@/components/WelcomeModal";
 import { getAgentClient, type AgentResponse } from "@/lib/agentClient";
-import { FeedbackStorage } from "@/lib/feedbackStorage";
+import { HelpCircle, Zap, Database, MessageSquare, Settings, BarChart3, TestTube, Globe, BookOpen } from "lucide-react";
 
 export default function Home() {
   const [isClient, setIsClient] = useState(false);
@@ -200,10 +201,14 @@ export default function Home() {
 
         {/* Main Content */}
         <Tabs defaultValue="validate" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-3 lg:w-auto lg:grid-cols-3">
+          <TabsList className="grid w-full grid-cols-4 lg:w-auto lg:grid-cols-4">
             <TabsTrigger value="validate" className="gap-2">
               <MessageSquare className="w-4 h-4" />
               Validate
+            </TabsTrigger>
+            <TabsTrigger value="knowledge-base" className="gap-2">
+              <BookOpen className="w-4 h-4" />
+              Knowledge Base
             </TabsTrigger>
             <TabsTrigger value="history" className="gap-2">
               <BarChart3 className="w-4 h-4" />
@@ -242,6 +247,10 @@ export default function Home() {
                 )}
               </div>
             </div>
+          </TabsContent>
+
+          <TabsContent value="knowledge-base">
+            <KnowledgeBase />
           </TabsContent>
 
           <TabsContent value="history">
